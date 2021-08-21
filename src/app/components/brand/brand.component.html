@@ -1,5 +1,19 @@
-<br>
+<br />
 <ul class="list-group">
-  <li class="list-group-item active" aria-current="true">Markalar</li>
-  <li class="list-group-item" *ngFor="let brand of brands">{{brand.brandName}}</li>
+  <li
+    [class]="getAllBrandClass()"
+    (click)="clearCurrentColor()"
+    routerLink="/cars"
+    aria-current="true"
+  >
+    Markalar
+  </li>
+  <li
+    (click)="setCurrentBrand(brand)"
+    [class]="getCurrentBrand(brand)"
+    routerLink="/cars/brand/{{brand.brandId}}"
+    *ngFor="let brand of brands"
+  >
+    {{ brand.brandName }}
+  </li>
 </ul>

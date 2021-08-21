@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CarDetail } from 'src/app/models/carDetail';
+import { ActivatedRoute } from '@angular/router';
+import { CarDetailDto } from 'src/app/models/carDetailDto';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -8,16 +9,62 @@ import { CarService } from 'src/app/services/car.service';
   styleUrls: ['./car.component.css'],
 })
 export class CarComponent implements OnInit {
-  carDetails: CarDetail[] = [];
-  constructor(private carService: CarService) {}
+  cars: CarDetailDto[] = [];
+  currentCar: CarDetailDto;
+  imgUrl = 'https://localhost:44325/Images/';
+  dataLoaded = false;
+  constructor(
+    private carService: CarService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.getCarDetails();
+    this.activatedRoute.params.subscribe(params=>{
+      if (params["brandId"]) {
+        this.getCarsByBrandId(params["brandId"])
+      }
+      else if (params["colorId"]) {
+        this.getCarsByColorId(params["colorId"])
+      }
+      else{
+        this.getAllCarDto();
+      }
+    })
   }
 
-  getCarDetails() {
-    this.carService.getCarDetails().subscribe((response) => {
-      this.carDetails = response.data;
+  getAllCarDto() {
+    this.carService.getAllCarDto().subscribe((response) => {
+      this.cars = response.data;
     });
+  }
+
+  getCarsByBrandId(brandId: number) {
+    this.carService.getCarsByBrandId(brandId).subscribe((response) => {
+      this.cars = response.data;
+    });
+  }
+
+  getCarsByColorId(colorId: number) {
+    this.carService.getCarsByColorId(colorId).subscribe((response) => {
+      this.cars = response.data;
+    });
+  }
+
+  setCurrentCar(carDetailDto:CarDetailDto){
+    this.currentCar=carDetailDto;
+  }
+
+  getCarImage(car:CarDetailDto){
+    if (car.imagePath) {
+      return car.imagePath;
+    } else {
+      return 'default.jpg';
+    }
+  }
+
+  getCarDto(carId:number){
+    this.carService.getCarDto(carId).subscribe(response=>{
+      this.cars=response.data;
+    })
   }
 }

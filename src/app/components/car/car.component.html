@@ -1,22 +1,52 @@
-<table class="table table-dark table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Car</th>
-      <th scope="col">Brand</th>
-      <th scope="col">Color</th>
-      <th scope="col">Description</th>
-      <th scope="col">ModelYear</th>
-      <th scope="col">DailyPrice</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let car of carDetails">
-      <td>{{car.carName}}</td>
-      <td>{{car.brandName}}</td>
-      <td>{{car.colorName}}</td>
-      <td>{{car.description}}</td>
-      <td>{{car.modelYear}}</td>
-      <td>{{car.dailyPrice}}</td>
-    </tr>
-  </tbody>
-</table>
+
+<div class="row" style="margin-top: 50px">
+  <!-- Filter section end-->
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-3" *ngFor="let car of cars">
+        <div class="card mb-4 shadow-sm">
+          <img
+            class="bd-placeholder-img card-img-top"
+            width="200"
+            height="200"
+            src="{{ imgUrl }}{{ getCarImage(car) }}"
+            focusable="false"
+          />
+
+          <div class="card-body">
+            <p
+              class="card-text"
+              style="font-weight: 600; border-bottom: 1px solid black"
+            >
+              {{ car.carName }}
+            </p>
+            <p class="card-text" style="font-size: 13px">
+              Brand Name: {{ car.brandName }}
+            </p>
+            <p class="card-text" style="font-size: 13px">
+              Color Name: {{ car.colorName }}
+            </p>
+            <p class="card-text" style="font-size: 13px">
+              Model Year: {{ car.modelYear }}
+            </p>
+            <p class="card-text" style="font-size: 13px">
+              daliy Price: {{ car.dailyPrice | currency }}
+            </p>
+
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button
+                  type="button"
+                  class="btn btn-sm btn-primary"
+                  routerLink="/cars/details/{{ car.carId }}"
+                >
+                  Detail
+                </button>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
