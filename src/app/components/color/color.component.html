@@ -7,11 +7,14 @@
   >
     All Colors
   </li>
+  <div>
+    <input type="email" class="form-control" id="exampleFormControlInput1" [(ngModel)]="filterColor" placeholder="search color..">
+  </div>
   <li
     (click)="setCurrentColor(color)"
     [class]="getCurrentColorClass(color)"
     routerLink="/cars/color/{{color.colorId}}"
-    *ngFor="let color of colors"
+    *ngFor="let color of colors | filterColor:filterColor"
 
   >
     {{ color.colorName }}

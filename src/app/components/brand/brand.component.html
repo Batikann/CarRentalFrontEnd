@@ -6,13 +6,21 @@
     routerLink="/cars"
     aria-current="true"
   >
-    Markalar
+    All Brand
   </li>
+  <div>
+    <input
+      type="email"
+      class="form-control" [(ngModel)]="filterBrand"
+      id="exampleFormControlInput1"
+      placeholder="search brand...."
+    />
+  </div>
   <li
     (click)="setCurrentBrand(brand)"
     [class]="getCurrentBrand(brand)"
-    routerLink="/cars/brand/{{brand.brandId}}"
-    *ngFor="let brand of brands"
+    routerLink="/cars/brand/{{ brand.brandId }}"
+    *ngFor="let brand of brands | filterBrand:filterBrand"
   >
     {{ brand.brandName }}
   </li>

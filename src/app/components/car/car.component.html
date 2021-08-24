@@ -1,52 +1,83 @@
+<div class="row">
+  <div class="row" style="margin-top: 25px">
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="filterCar"
+        id="exampleFormControlInput1"
+        placeholder="search car..."
+      />
+    </div>
 
-<div class="row" style="margin-top: 50px">
-  <!-- Filter section end-->
-  <div class="col-md-12">
-    <div class="row">
-      <div class="col-md-3" *ngFor="let car of cars">
-        <div class="card mb-4 shadow-sm">
-          <img
-            class="bd-placeholder-img card-img-top"
-            width="200"
-            height="200"
-            src="{{ imgUrl }}{{ getCarImage(car) }}"
-            focusable="false"
-          />
+    <div class="col-md-4">
+      <select [(ngModel)]="filterBrandId" class="form-select" aria-placeholder="Brands">
+        <option [ngValue]="undefined" disabled selected>--- Chose a Brand---</option>
+        <option *ngFor="let brand of brands" [value]="brand.brandId" [selected]="setCurrentBrand(brand.brandId)">
+          {{brand.brandName}}</option>
+      </select>
+    </div>
 
-          <div class="card-body">
-            <p
-              class="card-text"
-              style="font-weight: 600; border-bottom: 1px solid black"
-            >
-              {{ car.carName }}
-            </p>
-            <p class="card-text" style="font-size: 13px">
-              Brand Name: {{ car.brandName }}
-            </p>
-            <p class="card-text" style="font-size: 13px">
-              Color Name: {{ car.colorName }}
-            </p>
-            <p class="card-text" style="font-size: 13px">
-              Model Year: {{ car.modelYear }}
-            </p>
-            <p class="card-text" style="font-size: 13px">
-              daliy Price: {{ car.dailyPrice | currency }}
-            </p>
+      <div class="col-md-4">
+        <select class="form-select" [(ngModel)]="filterColorId" aria-placeholder="Colors">
+          <option [ngValue]="undefined" disabled selected>--- Chose a Color---</option>
+          <option *ngFor="let color of colors" [value]="color.colorId">{{color.colorName}}</option>
+        </select>
+      </div>
 
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <button
-                  type="button"
-                  class="btn btn-sm btn-primary"
-                  routerLink="/cars/details/{{ car.carId }}"
-                >
-                  Detail
-                </button>
-              </div>
-              </div>
+
+      <button id="filt1" class="btn btn-info">Filter</button>
+      <button id="filt2" class="btn btn-warning">Clear</button>
+
+
+
+    <p></p>
+    <div
+      class="col-md-5 col-lg-4"
+      *ngFor="let car of cars | filterCar: filterCar"
+    >
+      <div class="card mb-4 shadow-sm">
+        <img
+          class="bd-placeholder-img card-img-top"
+          width="200"
+          height="200"
+          src="{{ imgUrl }}{{ getCarImage(car) }}"
+          focusable="false"
+        />
+
+        <div class="card-body">
+          <p
+            class="card-text"
+            style="font-weight: 600; border-bottom: 1px solid black"
+          >
+            {{ car.carName }}
+          </p>
+          <p class="card-text" style="font-size: 13px">
+            Brand Name: {{ car.brandName }}
+          </p>
+          <p class="card-text" style="font-size: 13px">
+            Color Name: {{ car.colorName }}
+          </p>
+          <p class="card-text" style="font-size: 13px">
+            Model Year: {{ car.modelYear }}
+          </p>
+          <p class="card-text" style="font-size: 13px">
+            daliy Price: {{ car.dailyPrice | currency }}
+          </p>
+
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <button
+                type="button"
+                class="btn btn-sm btn-primary"
+                routerLink="/cars/details/{{ car.carId }}"
+              >
+                Detail
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
