@@ -4,6 +4,7 @@ import { CarDetailDto } from 'src/app/models/carDetailDto';
 import { CarImage } from 'src/app/models/carImage';
 import { CarService } from 'src/app/services/car.service';
 import { CarimageService } from 'src/app/services/carimage.service';
+import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
   selector: 'app-car-detail',
@@ -13,12 +14,15 @@ import { CarimageService } from 'src/app/services/carimage.service';
 export class CarDetailComponent implements OnInit {
   carDetail: CarDetailDto[];
   carImages: CarImage[];
+  currentCar:CarDetailDto;
   currentCarImage: CarImage;
+  isCarRentable:boolean;
   imageUrl = 'https://localhost:44325/Images/';
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute,
-    private carImageService: CarimageService
+    private carImageService: CarimageService,
+    private rentalService:RentalService
   ) {}
 
   ngOnInit(): void {
@@ -40,6 +44,12 @@ export class CarDetailComponent implements OnInit {
     this.carService.getCarDto(carId).subscribe((response) => {
       this.carDetail = response.data;
     });
+  }
+
+  checkCarRentable(carId:number){
+    this.rentalService.getRentalCarControl(carId).subscribe((response) => {
+      this.isCarRentable = response.success;
+    })
   }
 
   getActivePhoto(index: number) {
@@ -67,5 +77,21 @@ export class CarDetailComponent implements OnInit {
 
   setCurrentImageClass(image: CarImage) {
     this.currentCarImage = image;
+  }
+
+  // checkRentalStatus(carId:number){
+  //   let selectCar=this.carDetail.filter(c=>c.carId==carId);
+  //   if (selectCar[0].isRented==true) {
+  //     return "btn btn-success disabled";
+  //   }
+  //   return "btn btn-success";
+  // }
+
+  setCurrentCar(carId:number) {
+    this.carService.getCarDto(carId).subscribe(response=>{
+      this.currentCar=response.data[0];
+      console.log(this.currentCar);
+    })
+
   }
 }

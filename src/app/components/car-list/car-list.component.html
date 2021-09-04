@@ -1,0 +1,30 @@
+<div class="card" style="margin-top: 25px;">
+  <div class="card-header">Car Panel</div>
+  <div class="card-boady">
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th>CarId</th>
+          <th>Car Name</th>
+          <th>Model Year</th>
+          <th>Daily Price</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let car of cars">
+          <td>{{ car.carId }}</td>
+          <td>{{ car.carName }}</td>
+          <td>{{ car.modelYear }}</td>
+          <td>{{ car.dailyPrice }}</td>
+          <td><button class="btn btn-warning">Update</button></td>
+          <td><button class="btn btn-danger">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="card-footer" style="text-align: center;">
+      <button class="btn btn-success" routerLink="/cars/add">Add New Car</button>
+    </div>
+  </div>
+  </div>

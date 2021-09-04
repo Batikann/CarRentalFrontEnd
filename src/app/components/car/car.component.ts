@@ -7,6 +7,7 @@ import { Color } from 'src/app/models/color';
 import { BrandService } from 'src/app/services/brand.service';
 import { CarService } from 'src/app/services/car.service';
 import { ColorService } from 'src/app/services/color.service';
+import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
   selector: 'app-car',
@@ -18,6 +19,7 @@ export class CarComponent implements OnInit {
   currentCar: CarDetailDto;
   brands: Brand[];
   colors: Color[];
+  routerLink="";
   filterCar = '';
   filterBrandId: number;
   filterColorId: number;
@@ -28,16 +30,15 @@ export class CarComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private brandService: BrandService,
     private colorService: ColorService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private rentalService:RentalService
   ) {}
 
   ngOnInit(): void {
     this.getBrands();
     this.getColors();
     this.activatedRoute.params.subscribe((params) => {
-      if (params['brandId'] && params['colorId']) {
-        this.getCarsByBrandAndColorId(params['brandId'], params['colorId']);
-      } else if (params['brandId']) {
+       if (params['brandId']) {
         this.getCarsByBrandId(params['brandId']);
       } else if (params['colorId']) {
         this.getCarsByColorId(params['colorId']);
@@ -75,8 +76,12 @@ export class CarComponent implements OnInit {
     });
   }
 
-  setCurrentCar(carDetailDto: CarDetailDto) {
-    this.currentCar = carDetailDto;
+  setCurrentCar(carId:number) {
+    this.carService.getCarDto(carId).subscribe(response=>{
+      this.currentCar=response.data[0];
+      console.log(this.currentCar);
+    })
+
   }
 
   getCarImage(car: CarDetailDto) {
@@ -93,19 +98,28 @@ export class CarComponent implements OnInit {
     });
   }
 
-  getCarsByBrandAndColorId(brandId: number, colorId: number) {
-    this.carService
-      .getCarsByBrandAndColorId(brandId, colorId)
-      .subscribe((response) => {
-        this.cars = response.data;
-      });
+  changeRouteLink(){
+    if (this.filterBrandId!==null && this.filterColorId!==null) {
+      this.routerLink = "/cars/brand/" + this.filterBrandId + "/color/" + this.filterColorId
+      return this.routerLink
+    }else if(this.filterBrandId==null && this.filterColorId!==null){
+      this.routerLink = "/cars/color/" + this.filterColorId
+      return this.routerLink
+    }else if(this.filterBrandId!==null && this.filterColorId == null){
+      this.routerLink = "/cars/brand/" + this.filterBrandId
+      return this.routerLink
+    }else{
+      this.routerLink = "/"
+      return this.routerLink
+    }
   }
 
-  setCurrentBrand(brandId: number) {
-    return brandId == this.filterBrandId ? true : false;
-  }
 
-  setCurrentColor(colorId: number) {
-    return colorId == this.filterColorId ? true : false;
+  changeButtonClass(){
+    if (this.filterBrandId ||this.filterColorId) {
+      return "btn btn-success"
+    }else{
+      return "btn btn-success disabled"
+    }
   }
 }

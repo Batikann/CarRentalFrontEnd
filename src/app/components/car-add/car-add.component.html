@@ -1,0 +1,74 @@
+<div class="content" style="margin-top: 25px;">
+  <div class="card">
+    <div class="card-header">New Car Add Panel</div>
+    <div class="card-body">
+      <form [formGroup]="carAddForm">
+        <div class="mb-3">
+          <div class="form-group">
+            <label class="form-label" for="carName">Car Name</label>
+            <input
+              type="text"
+              id="carName"
+              formControlName="carName"
+              class="form-control"
+              placeholder="car name"
+            />
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="form-group">
+            <label class="form-label" for="brandName">Brand</label>
+            <select class="form-select" aria-label="Default select example" formControlName="brandId">
+              <option selected disabled value="">---Chose Brand---</option>
+              <option *ngFor="let brand of brands" [ngValue]="brand.brandId">{{brand.brandName}}</option>
+
+            </select>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="form-group">
+            <label class="form-label" for="colorName">Color</label>
+            <select class="form-select" aria-label="Default select example" formControlName="colorId">
+              <option selected disabled value="">---Chose Color---</option>
+              <option *ngFor="let color of colors" [ngValue]="color.colorId">{{color.colorName}}</option>
+
+            </select>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="form-group">
+            <label class="form-label" for="modelYear">Model Year</label>
+            <input
+              type="text"
+              id="modelYear"
+              formControlName="modelYear"
+              class="form-control"
+              placeholder="model year"
+            />
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="form-group">
+            <label class="form-label" for="dailyPrice">Daily Price</label>
+            <input
+              type="number"
+              id="dailyPrice"
+              formControlName="dailyPrice"
+              class="form-control"
+              placeholder="daily price"
+            />
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="form-group">
+            <label class="form-label" for="description">Description</label>
+          <textarea class="form-control" id="description" rows="3" formControlName="description" placeholder="description"></textarea>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div style="text-align: center;" class="card-footer">
+      <button type="button" class="btn btn-success" (click)="add()">Add</button>
+    </div>
+  </div>
+</div>

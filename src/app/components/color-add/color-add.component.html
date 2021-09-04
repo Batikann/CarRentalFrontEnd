@@ -1,0 +1,24 @@
+<div class="content">
+  <div class="card">
+    <div class="card-header">New Color Add Panel</div>
+    <div class="card-body">
+      <form [formGroup]="colorAddForm">
+        <div class="mb-3">
+          <div class="form-group">
+            <label class="form-label" for="colorName">Color Name</label>
+            <input
+              type="text"
+              id="colorName"
+              formControlName="colorName"
+              class="form-control"
+              placeholder="color name"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div style="text-align: center;" class="card-footer">
+      <button type="button" class="btn btn-success" (click)="add()">Add</button>
+    </div>
+  </div>
+</div>

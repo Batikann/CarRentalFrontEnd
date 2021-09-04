@@ -64,10 +64,13 @@
       </table>
       <div class="card-body text-center">
         <div class="card-title"><h5>Description</h5></div>
-        <hr>
-        {{car.description}}
+        <hr />
+        {{ car.description }}
       </div>
     </div>
-    <div class="card-footer "><button class="btn btn-success">Rent Car</button></div>
+    <div class="card-footer">
+      <button class="btn btn-secondary" routerLink="/cars">Go Back</button>
+      <!-- <app-rental-add [car]="carDetail"></app-rental-add>> -->
+    </div>
   </div>
 </div>

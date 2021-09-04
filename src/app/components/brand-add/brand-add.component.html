@@ -1,0 +1,24 @@
+<div class="content">
+  <div class="card">
+    <div class="card-header">New Brand Add Panel</div>
+    <div class="card-body">
+      <form [formGroup]="brandAddForm">
+        <div class="mb-3">
+          <div class="form-group">
+            <label class="form-label" for="brandName">Brand Name</label>
+            <input
+              type="text"
+              id="brandName"
+              formControlName="brandName"
+              class="form-control"
+              placeholder="brand name"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div style="text-align: center;" class="card-footer">
+      <button type="button" class="btn btn-success" (click)="add()">Add</button>
+    </div>
+  </div>
+</div>
