@@ -20,7 +20,7 @@ export class ColorAddComponent implements OnInit {
     private formBuilder: FormBuilder,
     private colorService: ColorService,
     private toastrService: ToastrService,
-    private router:Router
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -36,20 +36,22 @@ export class ColorAddComponent implements OnInit {
   add() {
     if (this.colorAddForm.valid) {
       let productModel = Object.assign({}, this.colorAddForm.value);
-      this.colorService.add(productModel).subscribe((data) => {
-        console.log(data);
-        this.toastrService.success(data.message, 'Başarılı');
-        this.backToList();
-      },responseError=>{
-        console.log(responseError.error);
-
-      });
+      this.colorService.add(productModel).subscribe(
+        (data) => {
+          console.log(data);
+          this.toastrService.success(data.message, 'Başarılı');
+          this.backToList();
+        },
+        (responseError) => {
+          console.log(responseError.error);
+        }
+      );
     } else {
       this.toastrService.error('Formunuz Eksik Veya Hatalı', 'Dikkat');
     }
   }
 
-  backToList(){
-     this.router.navigate(["/colors/list"]);
+  backToList() {
+    this.router.navigate(['/colors/list']);
   }
 }

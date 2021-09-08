@@ -5,7 +5,7 @@
       <thead>
         <tr>
           <th>ColorId</th>
-          <th>Color Name Name</th>
+          <th>Color Name</th>
           <th>Update</th>
           <th>Delete</th>
         </tr>
@@ -14,8 +14,8 @@
         <tr *ngFor="let color of colors">
           <td>{{ color.colorId }}</td>
           <td>{{ color.colorName }}</td>
-          <td><button class="btn btn-warning">Update</button></td>
-          <td><button class="btn btn-danger">Delete</button></td>
+          <td><button routerLink="/colors/update/{{color.colorId}}" class="btn btn-warning">Update</button></td>
+          <td><button class="btn btn-danger" routerLink="/colors/delete/{{color.colorId}}">Delete</button></td>
         </tr>
       </tbody>
     </table>

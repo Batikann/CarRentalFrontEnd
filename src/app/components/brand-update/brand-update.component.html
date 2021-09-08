@@ -2,25 +2,25 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        <h5 class="title">Color Update</h5>
+        <h5 class="title">Brand Update</h5>
       </div>
       <div class="card-body">
-        <form [formGroup]="colorUpdateForm">
+        <form [formGroup]="brandUpdateForm">
           <div class="form-group">
             <input
               class="form-control m-2"
               type="hidden"
-              id="colorId"
-              [(ngModel)]="colorId"
-              formControlName="colorId"
+              id="brandId"
+              [(ngModel)]="brandId"
+              formControlName="brandId"
             />
-            <label class="form-label m-2">Color Name</label>
+            <label class="form-label m-2">Brand Name</label>
             <input
               class="form-control m-2"
-              [(ngModel)]="colorName"
+              [(ngModel)]="brandName"
               type="text"
-              id="colorName"
-              formControlName="colorName"
+              id="brandName"
+              formControlName="brandName"
             />
           </div>
         </form>

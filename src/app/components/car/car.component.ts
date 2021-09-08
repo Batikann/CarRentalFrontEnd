@@ -19,10 +19,7 @@ export class CarComponent implements OnInit {
   currentCar: CarDetailDto;
   brands: Brand[];
   colors: Color[];
-  routerLink="";
   filterCar = '';
-  filterBrandId: number;
-  filterColorId: number;
   imgUrl = 'https://localhost:44325/Images/';
   dataLoaded = false;
   constructor(
@@ -35,8 +32,6 @@ export class CarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getBrands();
-    this.getColors();
     this.activatedRoute.params.subscribe((params) => {
        if (params['brandId']) {
         this.getCarsByBrandId(params['brandId']);
@@ -96,30 +91,5 @@ export class CarComponent implements OnInit {
     this.carService.getCarDto(carId).subscribe((response) => {
       this.cars = response.data;
     });
-  }
-
-  changeRouteLink(){
-    if (this.filterBrandId!==null && this.filterColorId!==null) {
-      this.routerLink = "/cars/brand/" + this.filterBrandId + "/color/" + this.filterColorId
-      return this.routerLink
-    }else if(this.filterBrandId==null && this.filterColorId!==null){
-      this.routerLink = "/cars/color/" + this.filterColorId
-      return this.routerLink
-    }else if(this.filterBrandId!==null && this.filterColorId == null){
-      this.routerLink = "/cars/brand/" + this.filterBrandId
-      return this.routerLink
-    }else{
-      this.routerLink = "/"
-      return this.routerLink
-    }
-  }
-
-
-  changeButtonClass(){
-    if (this.filterBrandId ||this.filterColorId) {
-      return "btn btn-success"
-    }else{
-      return "btn btn-success disabled"
-    }
   }
 }

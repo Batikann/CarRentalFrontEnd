@@ -18,8 +18,8 @@
           <td>{{ car.carName }}</td>
           <td>{{ car.modelYear }}</td>
           <td>{{ car.dailyPrice }}</td>
-          <td><button class="btn btn-warning">Update</button></td>
-          <td><button class="btn btn-danger">Delete</button></td>
+          <td><button class="btn btn-warning" routerLink="/cars/update/{{car.carId}}">Update</button></td>
+          <td><button class="btn btn-danger" routerLink="/cars/delete/{{car.carId}}">Delete</button></td>
         </tr>
       </tbody>
     </table>

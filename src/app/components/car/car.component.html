@@ -9,54 +9,7 @@
         placeholder="search car..."
       />
     </div>
-
-    <div class="col-md-4">
-      <select
-        [(ngModel)]="filterBrandId"
-        class="form-select"
-        aria-placeholder="Brands"
-      >
-        <!-- <option [ngValue]="undefined" disabled selected>
-          --- Chose a Brand---
-        </option> -->
-        <option
-          *ngFor="let brand of brands"
-          value="{{brand.brandId}}"
-
-        >
-          {{ brand.brandName }}
-        </option>
-      </select>
-    </div>
-
-    <div class="col-md-4">
-      <select
-        class="form-select"
-        [(ngModel)]="filterColorId"
-        aria-placeholder="Colors"
-      >
-        <!-- <option [ngValue]="undefined" disabled selected>
-          --- Chose a Color---
-        </option> -->
-        <option
-          *ngFor="let color of colors"
-          value="{{color.colorId}}"
-        >
-          {{ color.colorName }}
-        </option>
-      </select>
-    </div>
-
-    <button
-      id="filt1"
-      class="btn btn-info"
-      type="button"
-      [class]="changeButtonClass()" [routerLink]="changeRouteLink()"
-    >
-      Filter
-    </button>
-    <button id="filt2" class="btn btn-warning" routerLink="/cars">Clear</button>
-
+    <app-car-filter></app-car-filter>
     <p></p>
     <div
       class="col-md-5 col-lg-4"
