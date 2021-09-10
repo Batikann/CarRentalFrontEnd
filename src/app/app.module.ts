@@ -31,6 +31,7 @@ import { CarUpdateComponent } from './components/car-update/car-update.component
 import { ColorDeleteComponent } from './components/color-delete/color-delete.component';
 import { BrandDeleteComponent } from './components/brand-delete/brand-delete.component';
 import { CarDeleteComponent } from './components/car-delete/car-delete.component';
+import { CarImageAddComponent } from './components/car-image-add/car-image-add.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { CarDeleteComponent } from './components/car-delete/car-delete.component
     CarUpdateComponent,
     ColorDeleteComponent,
     BrandDeleteComponent,
-    CarDeleteComponent
+    CarDeleteComponent,
+    CarImageAddComponent
   ],
   imports: [
     BrowserModule,

@@ -21,18 +21,16 @@
                           <th>Color</th>
                           <th>Model Year</th>
                           <th>Daily Price</th>
-                          <th>Description</th>
                       </tr>
                   </thead>
                   <tbody>
                       <tr *ngIf="car">
                           <td>{{car.carId}}</td>
-                          <td>{{car.brandName}}</td>
+                          <td>{{brandName}}</td>
                           <td>{{car.carName}}</td>
-                          <td>{{car.colorName}}</td>
+                          <td>{{colorName}}</td>
                           <td>{{car.modelYear}}</td>
                           <td>{{car.dailyPrice}}</td>
-                          <td>{{car.description}}</td>
                       </tr>
                   </tbody>
 

@@ -65,9 +65,9 @@ export class CarService {
 
   getCarByIdSingle(
     carId: number
-  ): Observable<SingleResponseModel<CarDetailDto>> {
-    let newPath = this.apiUrl + 'cars/getcardetails?id=' + carId;
-    return this.httpClient.get<SingleResponseModel<CarDetailDto>>(newPath);
+  ): Observable<SingleResponseModel<Car>> {
+    let newPath = this.apiUrl + 'cars/getcarbyid?id=' + carId;
+    return this.httpClient.get<SingleResponseModel<Car>>(newPath);
   }
 
   getCars(): Observable<ListResponseModel<Car>> {

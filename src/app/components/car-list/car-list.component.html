@@ -10,6 +10,7 @@
           <th>Daily Price</th>
           <th>Update</th>
           <th>Delete</th>
+          <th>Add Image</th>
         </tr>
       </thead>
       <tbody>
@@ -20,6 +21,7 @@
           <td>{{ car.dailyPrice }}</td>
           <td><button class="btn btn-warning" routerLink="/cars/update/{{car.carId}}">Update</button></td>
           <td><button class="btn btn-danger" routerLink="/cars/delete/{{car.carId}}">Delete</button></td>
+          <td> <button class="btn btn-secondary" routerLink="/cars/addimage/{{car.carId}}">Add Image</button></td>
         </tr>
       </tbody>
     </table>
