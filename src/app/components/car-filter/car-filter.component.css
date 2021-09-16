@@ -1,14 +1,10 @@
-#filt1 {
-  margin-top: 30px;
-  width: 130px;
-  margin-right: 10px;
-  margin-left: 10px;
-}
-
-#filt2{
-  margin-top: 30px;
+#btn1{
+  height: 35px;
   width: 130px;
 }
 
-
-
+#btn2{
+  height: 35px;
+  width: 130px;
+  margin-left: 15px;
+}

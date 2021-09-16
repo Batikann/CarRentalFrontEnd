@@ -15,6 +15,8 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
 import { ColorDeleteComponent } from './components/color-delete/color-delete.component';
 import { ColorListComponent } from './components/color-list/color-list.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   {path:"",pathMatch:"full",component:CarComponent},
@@ -26,7 +28,7 @@ const routes: Routes = [
   {path:"brands/list",component:BrandListComponent},
   {path:"brands/delete/:brandId",component:BrandDeleteComponent},
   {path:"brands/update/:brandId",component:BrandUpdateComponent},
-  {path:"cars/brand/:brandId/color/:colorId",component:CarComponent},
+  {path:"cars/brand/:brandId/color/:colorId", component:CarComponent},
   {path:"colors/list",component:ColorListComponent},
   {path:"cars/addimage/:carId",component:CarImageAddComponent},
   {path:"colors/delete/:colorId",component:ColorDeleteComponent},
@@ -35,7 +37,9 @@ const routes: Routes = [
   {path:"colors/add",component:ColorAddComponent},
   {path:"brands/add",component:BrandAddComponent},
   {path:"cars/add",component:CarAddComponent},
-  {path:"cars/update/:carId",component:CarUpdateComponent}
+  {path:"cars/update/:carId",component:CarUpdateComponent},
+  {path:"login",component:LoginComponent},
+  {path:"register",component:RegisterComponent}
 
 ];
 

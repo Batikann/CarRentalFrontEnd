@@ -1,0 +1,26 @@
+
+<body>
+  <div class="main_div">
+    <div class="title">Login Form</div>
+    <div class="social_icons">
+    </div>
+    <form [formGroup]="loginForm">
+      <div class="input_box">
+        <input type="text" placeholder="Email" required formControlName="email">
+      </div>
+      <div class="input_box">
+        <input type="password" placeholder="Password" required formControlName="password">
+      </div>
+      <div class="input_box button">
+        <input type="submit" value="Login" (click)="login()" routerLink="/cars" >
+      </div>
+      <div class="sign_up">
+        <span style="color: #ffffff;">Don't Have an Account Yet?</span><a routerLink="/register"> Sign Up now!</a>
+      </div>
+    </form>
+  </div>
+
+</body>
+
+
+

@@ -1,58 +1,60 @@
-<div class="row">
-  <div class="row" style="margin-top: 25px">
-    <div class="mb-3">
-      <input
-        type="text"
-        class="form-control"
-        [(ngModel)]="filterCar"
-        id="exampleFormControlInput1"
-        placeholder="search car..."
-      />
-    </div>
-    <app-car-filter></app-car-filter>
-    <p></p>
-    <div
-      class="col-md-5 col-lg-4"
-      *ngFor="let car of cars | filterCar: filterCar"
-    >
-      <div class="card mb-4 shadow-sm">
-        <img
-          class="bd-placeholder-img card-img-top"
-          width="200"
-          height="200"
-          src="{{ imgUrl }}{{ getCarImage(car) }}"
-          focusable="false"
+<div class="container">
+  <div class="row">
+    <div class="row" style="margin-top: 25px">
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="filterCar"
+          id="exampleFormControlInput1"
+          placeholder="search car..."
         />
+      </div>
+       <app-car-filter></app-car-filter>
+      <p></p>
+      <div
+        class="col-md-5 col-lg-4"
+        *ngFor="let car of cars | filterCar: filterCar"
+      >
+        <div class="card mb-4 shadow-sm">
+          <img
+            class="bd-placeholder-img card-img-top"
+            width="200"
+            height="200"
+            src="{{ imgUrl }}{{ getCarImage(car) }}"
+            focusable="false"
+          />
 
-        <div class="card-body">
-          <p
-            class="card-text"
-            style="font-weight: 600; border-bottom: 1px solid black"
-          >
-            {{ car.carName }}
-          </p>
-          <p class="card-text" style="font-size: 13px">
-            Brand Name: {{ car.brandName }}
-          </p>
-          <p class="card-text" style="font-size: 13px">
-            Color Name: {{ car.colorName }}
-          </p>
-          <p class="card-text" style="font-size: 13px">
-            Model Year: {{ car.modelYear }}
-          </p>
-          <p class="card-text" style="font-size: 13px">
-            daliy Price: {{ car.dailyPrice | currency }}
-          </p>
+          <div class="card-body">
+            <p
+              class="card-text"
+              style="font-weight: 600; border-bottom: 1px solid black"
+            >
+              {{ car.carName }}
+            </p>
+            <p class="card-text" style="font-size: 13px">
+              Brand Name: {{ car.brandName }}
+            </p>
+            <p class="card-text" style="font-size: 13px">
+              Color Name: {{ car.colorName }}
+            </p>
+            <p class="card-text" style="font-size: 13px">
+              Model Year: {{ car.modelYear }}
+            </p>
+            <p class="card-text" style="font-size: 13px">
+              daliy Price: {{ car.dailyPrice | currency }}
+            </p>
 
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group">
-              <button
-                type="button"
-                class="btn btn-sm btn-primary"
-                routerLink="/cars/details/{{ car.carId }}"
-              >
-                Detail
-              </button>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button
+                  type="button"
+                  class="btn btn-sm btn-primary"
+                  routerLink="/cars/details/{{ car.carId }}"
+                >
+                  Detail
+                </button>
+              </div>
             </div>
           </div>
         </div>

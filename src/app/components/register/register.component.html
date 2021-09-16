@@ -1,0 +1,31 @@
+
+<body>
+  <div class="main_div">
+    <div class="title">Register Form</div>
+    <div class="social_icons">
+    </div>
+    <form [formGroup]="registerForm">
+      <div class="input_box">
+        <input type="text" placeholder="First Name" required formControlName="firstName">
+      </div>
+      <div class="input_box">
+        <input type="text" placeholder="Last Name" required formControlName="lastName">
+      </div>
+      <div class="input_box">
+        <input type="text" placeholder="Email" required formControlName="email">
+      </div>
+      <div class="input_box">
+        <input type="password" placeholder="Password" required formControlName="password">
+      </div>
+      <div class="input_box button">
+        <input type="submit" value="Register" (click)="register()" >
+      </div>
+      <div class="sign_up">
+        <span style="color: #ffffff;">Already have a account?</span><a routerLink="/login"> Login now</a>
+      </div>
+    </form>
+  </div>
+
+</body>
+
+
