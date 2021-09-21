@@ -35,6 +35,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { CarFilterComponent } from './components/car-filter/car-filter.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { RentalAddComponent } from './components/rental-add/rental-add.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +67,10 @@ import { RegisterComponent } from './components/register/register.component';
     FooterComponent,
     LoginComponent,
     CarFilterComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent,
+    PaymentComponent,
+    RentalAddComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Brand } from 'src/app/models/brand';
 import { Color } from 'src/app/models/color';
 import { BrandService } from 'src/app/services/brand.service';
@@ -17,7 +18,8 @@ export class CarFilterComponent implements OnInit {
   routeLink = '';
   constructor(
     private brandService: BrandService,
-    private colorService: ColorService
+    private colorService: ColorService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -46,15 +48,13 @@ export class CarFilterComponent implements OnInit {
 
   changeRouteLink() {
     if (this.selectedBrandId !== null && this.selectedColorId !== null) {
-      return (
-        '/cars/brand/' + this.selectedBrandId + '/color/' + this.selectedColorId
-      );
+      this.router.navigate(["cars/brand/"+this.selectedBrandId+"/color/"+this.selectedColorId])
     } else if (this.selectedBrandId == null && this.selectedColorId !== null) {
-      return '/cars/color/' + this.selectedColorId;
+      this.router.navigate(["cars/color/"+this.selectedColorId])
     } else if (this.selectedBrandId !== null && this.selectedColorId == null) {
-      return '/cars/brand/' + this.selectedBrandId;
+      this.router.navigate(["cars/brand/"+this.selectedBrandId])
     } else {
-      return '/';
+      this.router.navigate(["/"])
     }
   }
 }

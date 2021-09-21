@@ -20,7 +20,7 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" *ngIf="isAdmin()">
           <a
             class="nav-link dropdown-toggle"
             href="#"
@@ -29,15 +29,15 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Dropdown
+            Admin Panel
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" routerLink="/cars/list">Car</a></li>
+            <li><a class="dropdown-item" routerLink="/cars/list">Cars</a></li>
             <li>
-              <a class="dropdown-item" routerLink="/colors/list">Color</a>
+              <a class="dropdown-item" routerLink="/colors/list">Colors</a>
             </li>
             <li>
-              <a class="dropdown-item" routerLink="/brands/list">Brand</a>
+              <a class="dropdown-item" routerLink="/brands/list">Brands</a>
             </li>
           </ul>
         </li>
@@ -65,11 +65,11 @@
         <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle"> <span style="color: aliceblue;"> {{currentUser}}</span>
         </a>
         <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-          <li><a class="dropdown-item" href="#">New project...</a></li>
+          <li><a class="dropdown-item" routerLink="">Admin Panel</a></li>
           <li><a class="dropdown-item" href="#">Settings</a></li>
-          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li><a class="dropdown-item" routerLink="/profile">Profile</a></li>
           <li><hr class="dropdown-divider" /></li>
-          <li><a class="dropdown-item" (click)="logOut()">Sign out</a></li>
+          <li><a class="dropdown-item" (click)="logOut()" routerLink="/cars">Sign out</a></li>
         </ul>
       </div>
     </div>

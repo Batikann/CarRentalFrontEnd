@@ -16,7 +16,10 @@ import { ColorDeleteComponent } from './components/color-delete/color-delete.com
 import { ColorListComponent } from './components/color-list/color-list.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
 import { LoginComponent } from './components/login/login.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
+import { RentalAddComponent } from './components/rental-add/rental-add.component';
 
 const routes: Routes = [
   {path:"",pathMatch:"full",component:CarComponent},
@@ -39,7 +42,10 @@ const routes: Routes = [
   {path:"cars/add",component:CarAddComponent},
   {path:"cars/update/:carId",component:CarUpdateComponent},
   {path:"login",component:LoginComponent},
-  {path:"register",component:RegisterComponent}
+  {path:"register",component:RegisterComponent},
+  {path:"profile",component:ProfileComponent},
+   {path:"rentals/car/:carId",component:RentalAddComponent},
+  {path:"payment/car/:carId",component:PaymentComponent}
 
 ];
 

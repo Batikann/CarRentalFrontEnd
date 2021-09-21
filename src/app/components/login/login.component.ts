@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
       this.user = response.data;
       this.localStorageService.addCurrentCustomer(this.user);
       this.localStorageService.addCurrentUserId(this.user);
+      this.localStorageService.addCurrentCustomerEmail(this.user);
     });
   }
 
@@ -53,22 +54,22 @@ export class LoginComponent implements OnInit {
           this.toastrService.success('Giriş Başarılı', 'Hoşgeldiniz');
           this.getUser(loginModel.email);
           this.localStorageService.addToken(response.data);
-          setTimeout(()=>{
+          setTimeout(() => {
             this.reflesh();
-          })
-
+          });
         },
         (responseError) => {
           this.toastrService.error(responseError.error);
         }
       );
-    }
-    else{
-      this.toastrService.error("Bilgileriniz eksik veya Hatalı Lütfen Tekrar Deneyiniz")
+    } else {
+      this.toastrService.error(
+        'Bilgileriniz eksik veya Hatalı Lütfen Tekrar Deneyiniz'
+      );
     }
   }
 
-  reflesh(){
+  reflesh() {
     window.location.reload();
   }
 }

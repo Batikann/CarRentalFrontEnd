@@ -13,16 +13,17 @@ import { RentalService } from 'src/app/services/rental.service';
 })
 export class CarDetailComponent implements OnInit {
   carDetail: CarDetailDto[];
+  car: CarDetailDto;
   carImages: CarImage[];
-  currentCar:CarDetailDto;
+  currentCar: CarDetailDto;
   currentCarImage: CarImage;
-  isCarRentable:boolean;
+  isCarRentable: boolean;
   imageUrl = 'https://localhost:44325/Images/';
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute,
     private carImageService: CarimageService,
-    private rentalService:RentalService
+    private rentalService: RentalService
   ) {}
 
   ngOnInit(): void {
@@ -30,6 +31,7 @@ export class CarDetailComponent implements OnInit {
       if (params['carId']) {
         this.getCarDetails(params['carId']);
         this.getCarImage(params['carId']);
+        this.getCarDetailsSingle(params['carId']);
       }
     });
   }
@@ -46,10 +48,16 @@ export class CarDetailComponent implements OnInit {
     });
   }
 
-  checkCarRentable(carId:number){
+  getCarDetailsSingle(carId: number) {
+    this.carService.getCarDtoSingle(carId).subscribe((response) => {
+      this.car = response.data;
+    });
+  }
+
+  checkCarRentable(carId: number) {
     this.rentalService.getRentalCarControl(carId).subscribe((response) => {
       this.isCarRentable = response.success;
-    })
+    });
   }
 
   getActivePhoto(index: number) {
@@ -68,7 +76,7 @@ export class CarDetailComponent implements OnInit {
   }
 
   getCurrentImageClass(image: CarImage) {
-    if (image==this.carImages[0]) {
+    if (image == this.carImages[0]) {
       return 'carousel-item active';
     } else {
       return 'carousel-item ';
@@ -79,19 +87,14 @@ export class CarDetailComponent implements OnInit {
     this.currentCarImage = image;
   }
 
-  // checkRentalStatus(carId:number){
-  //   let selectCar=this.carDetail.filter(c=>c.carId==carId);
-  //   if (selectCar[0].isRented==true) {
-  //     return "btn btn-success disabled";
-  //   }
-  //   return "btn btn-success";
-  // }
+  isAviableCarRental(){
 
-  setCurrentCar(carId:number) {
-    this.carService.getCarDto(carId).subscribe(response=>{
-      this.currentCar=response.data[0];
+  }
+
+  setCurrentCar(carId: number) {
+    this.carService.getCarDto(carId).subscribe((response) => {
+      this.currentCar = response.data[0];
       console.log(this.currentCar);
-    })
-
+    });
   }
 }

@@ -63,6 +63,12 @@ export class CarService {
     return this.httpClient.get<ListResponseModel<CarDetailDto>>(newPath);
   }
 
+
+  getCarDtoSingle(carId:number):Observable<SingleResponseModel<CarDetailDto>>{
+    let newPath=this.apiUrl+'cars/getcardetails?id=' + carId;
+    return this.httpClient.get<SingleResponseModel<CarDetailDto>>(newPath);
+  }
+
   getCarByIdSingle(
     carId: number
   ): Observable<SingleResponseModel<Car>> {
@@ -88,8 +94,8 @@ export class CarService {
     return this.httpClient.get<ListResponseModel<CarDetailDto>>(newPath);
   }
 
-  getCarsDto(carId: number): Observable<ListResponseModel<CarDetailDto>> {
+  getCarsDto(carId: number): Observable<SingleResponseModel<CarDetailDto>> {
     let newPath = this.apiUrl + 'cars/getcarbyid?id=' + carId;
-    return this.httpClient.get<ListResponseModel<CarDetailDto>>(newPath);
+    return this.httpClient.get<SingleResponseModel<CarDetailDto>>(newPath);
   }
 }
